@@ -16,7 +16,7 @@ public class StaticProvider {
     public static Object[][] dataForDivOneTest() {
         return new Object[][]{
                 {6, 2, 3},
-                {2, 1, 2},
+                {2, 0, 2},
                 {4, 4, 1}
         };
     }
@@ -24,7 +24,7 @@ public class StaticProvider {
     @DataProvider(name = "dataForDivTwo", parallel = true)
     public static Object[][] dataForDivTwoTest() {
         return new Object[][]{
-                {8.8, 1, 8.8},
+                {8.8, 0, 8.8},
                 {6.4, 3.2, 2},
                 {4.4, 4.4, 1}
         };

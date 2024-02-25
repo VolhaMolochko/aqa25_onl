@@ -16,7 +16,6 @@ public class DivOneTest extends BaseTest {
         Assert.assertEquals(calculator.div1(6, 3), 2, "something wrong");
     }
 
-    ;
 
     @Test(dataProvider = "dataForDivOne", dataProviderClass = StaticProvider.class, threadPoolSize = 3)
     public void testDivDataProvider(int c, int d, int expectedResult) throws InterruptedException, NumberException {
@@ -24,18 +23,23 @@ public class DivOneTest extends BaseTest {
         Assert.assertEquals(calculator.div1(c, d), expectedResult, "incorrect result");
     }
 
-    ;
 
-    @Test(description = "check divide zero", testName = "Check divide dy zero", enabled = false)
-    public void testDivideOneByZero() throws NumberException {
+    @Test(description = "check divide zero", testName = "Check divide dy zero 1", groups = "Check zero")
+    public void testDivideOneByZero() {
         Assert.assertThrows(NumberException.class, () -> {
-            calculator.div1(5,1);
+            calculator.div1(5, 0);
         });
-    };
+    }
 
-    @Test (expectedExceptions = NumberException.class, testName = "Check divide dy zero", priority = 1)
+    @Test(expectedExceptions = NumberException.class, testName = "Check divide dy zero 2", priority = 1, groups = "Check zero")
     public void testDivideOneByZeroOne() throws NumberException {
-        calculator.div1(6,0);
+        calculator.div1(6, 0);
+    }
+
+    @Test(dataProvider = "dataForDivOne", dataProviderClass = StaticProvider.class, threadPoolSize = 3,
+            expectedExceptions = NumberException.class, testName = "Check divide dy zero 3", priority = 1, groups = "Check zero")
+    public void testDivideOneByZeroOneWithDataProvider(int c, int d, int expectedResult) throws NumberException {
+        calculator.div1(c,d);
     }
 
 }
