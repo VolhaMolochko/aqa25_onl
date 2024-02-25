@@ -55,5 +55,9 @@ public class CalcTest extends BaseTest {
         counter++;
     }
 
-
+//    @Test(description = "Test with description foe div1")
+//    public void testDescriptionForDiv1() {
+//        Assert.assertEquals(calculator.div1(6, 3), 5, "incorrect summ");
+//        counter++;
+//    }
 }
