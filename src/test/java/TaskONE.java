@@ -29,7 +29,6 @@ public class TaskONE {
         Select selectRoom = new Select(selectWebElementRoom);
 
         selectRoom.selectByValue("2");
-        Thread.sleep(1000);
 
         WebElement selectWebElementHeatingType = driver.findElement(By.id("heating_type"));
         Select selectHeatingType = new Select(selectWebElementHeatingType);
@@ -46,9 +45,6 @@ public class TaskONE {
 
         Assert.assertEquals(resultPower.getAttribute("value"), "1526");
         Assert.assertEquals(resultSpecificPower.getAttribute("value"), "64");
-
-        Thread.sleep(2000);
-
     }
 
     @AfterMethod
