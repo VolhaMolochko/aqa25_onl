@@ -1,4 +1,4 @@
-package services;
+package core;
 
 import configuration.ReadProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
