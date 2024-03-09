@@ -35,7 +35,7 @@ public class XPathLocatorsTest {
         Assert.assertTrue(driver.findElement(By.cssSelector("form>h4")).isDisplayed());
 
         //input на любом уровне
-       // Assert.assertTrue(driver.findElement(By.xpath("//p[starts-with(@title, 'Hell')]")).isDisplayed());
+        // Assert.assertTrue(driver.findElement(By.xpath("//p[starts-with(@title, 'Hell')]")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.cssSelector("from input")).isDisplayed());
 
         //поиск элемента с тегом div или любым тегом, у которого есть Id
@@ -61,7 +61,7 @@ public class XPathLocatorsTest {
         Assert.assertTrue(driver.findElement(By.xpath("//p[starts-with(@title, 'Hell')]")).isDisplayed());
         //поиск элемента у которого значение атрибута содержить подстроку
         Assert.assertTrue(driver.findElement(By.xpath("//p[contains(@title, 'beaut')]")).isDisplayed());
-    //Поиск элемента по индексу
+        //Поиск элемента по индексу
         Assert.assertTrue(driver.findElement(By.xpath("//ul/li[3]")).isDisplayed());
 
     }
