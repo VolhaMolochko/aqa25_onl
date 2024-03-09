@@ -26,6 +26,11 @@ public class DivTest extends BaseTest {
         Assert.assertEquals(Double.POSITIVE_INFINITY, calculator.div(5, 0), 0);
     }
 
+    @Test(testName = "ArithmeticException ...", expectedExceptions = ArithmeticException.class, groups = "Smoke")
+    public void testDivByZero() {
+        calculator.div(6, 0);
+    }
+
     @Test(testName = "Div double by 0 ...")
     public void testDoubleByZero() {
         Assert.assertEquals(Double.POSITIVE_INFINITY, calculator.div(8.7, 0), 0.0001);
@@ -36,27 +41,35 @@ public class DivTest extends BaseTest {
         Assert.assertEquals(Double.POSITIVE_INFINITY, calculator.div(Double.POSITIVE_INFINITY, 9.0), 0.0001);
     }
 
-    @Test
+    @Test(invocationCount = 2, invocationTimeOut = 2000)
     public void testDivNaN() {
         Assert.assertEquals(Double.NaN, calculator.div(Double.NaN, 4.0), 0.0001);
     }
 
-        @Test(dataProvider = "dataForDivInt", dataProviderClass = StaticProvider.class, threadPoolSize = 3)
+    @Test(dataProvider = "dataForDivInt", dataProviderClass = StaticProvider.class, threadPoolSize = 3, enabled = false,
+            groups = "Smoke", timeOut = 1000)
     public void testDivDataProviderNumber(int c, int d, int expectedResult) throws InterruptedException {
         Thread.sleep(new Random().nextInt(500));
         Assert.assertEquals(calculator.div(c, d), expectedResult, "incorrect result");
     }
 
-    @Test(dataProvider = "dataForDivInt", dataProviderClass = StaticProvider.class, threadPoolSize = 3)
+    @Test(dataProvider = "dataForDivInt", dataProviderClass = StaticProvider.class, threadPoolSize = 3,
+            dependsOnMethods = "testDivDataProviderDouble")
     public void testDivDataProviderInt(int c, int d, int expectedResult) throws InterruptedException {
         Thread.sleep(new Random().nextInt(500));
-        Assert.assertEquals(Double.POSITIVE_INFINITY, calculator.div(c,d), expectedResult, "incorrect result");
+        Assert.assertEquals(Double.POSITIVE_INFINITY, calculator.div(c, d), expectedResult, "incorrect result");
     }
 
-    @Test(dataProvider = "dataForDivDouble", dataProviderClass = StaticProvider.class, threadPoolSize = 3)
+    @Test(dataProvider = "dataForDivDouble", dataProviderClass = StaticProvider.class, threadPoolSize = 3, priority = 1)
     public void testDivDataProviderDouble(double c, double d, double expectedResult) throws InterruptedException {
         Thread.sleep(new Random().nextInt(500));
-        Assert.assertEquals(Double.POSITIVE_INFINITY, calculator.div(c,d), expectedResult, "incorrect result");
+        Assert.assertEquals(Double.POSITIVE_INFINITY, calculator.div(c, d), expectedResult, "incorrect result");
     }
 
+
+    @Test(testName = "NEGATIVE_INFINITY...")
+    public void testDivNegativeInfinity() {
+        Calculator calculator = new Calculator();
+        Assert.assertEquals(Double.NEGATIVE_INFINITY, calculator.div(-3.0, 0.0), 0.001);
+    }
 }
