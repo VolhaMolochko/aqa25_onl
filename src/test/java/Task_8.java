@@ -22,7 +22,7 @@ public class Task_8 {
     }
 
     @Test
-    public void login() throws InterruptedException {
+    public void login() {
         driver.get(ReadProperties.getUrl());
         driver.findElement(By.id("user-name")).sendKeys(ReadProperties.username());
         driver.findElement(By.name("password")).sendKeys(ReadProperties.password());
