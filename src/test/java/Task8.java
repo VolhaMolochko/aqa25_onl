@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.BrowsersService;
 
-public class Task_8 {
+public class Task8 {
     private WebDriver driver;
 
     @BeforeMethod
@@ -22,7 +22,7 @@ public class Task_8 {
     }
 
     @Test
-    public void login() {
+    public void greaTest() {
         driver.get(ReadProperties.getUrl());
         driver.findElement(By.id("user-name")).sendKeys(ReadProperties.username());
         driver.findElement(By.name("password")).sendKeys(ReadProperties.password());
