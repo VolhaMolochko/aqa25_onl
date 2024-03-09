@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.BrowsersService;
 
-public class Task8 {
+public class Task_8 {
     private WebDriver driver;
 
     @BeforeMethod
