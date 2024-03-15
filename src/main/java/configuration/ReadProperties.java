@@ -9,7 +9,7 @@ public class ReadProperties {
     static {
         properties = new Properties();
         try {
-            properties.load(ReadProperties.class.getClassLoader().getResourceAsStream("config.properties")); //ищет путь к конфиг файлу в папке таргет
+            properties.load(ReadProperties.class.getClassLoader().getResourceAsStream("config.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,8 +35,7 @@ public class ReadProperties {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }
 
-public static int timeout() {
-        return properties.getProperty("timeout"));
-}
-
+    public static int timeout()  {
+        return Integer.parseInt(properties.getProperty("timeout"));
+    }
 }
