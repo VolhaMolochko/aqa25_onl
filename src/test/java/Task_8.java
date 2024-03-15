@@ -29,6 +29,9 @@ public class Task_8 {
         driver.findElement(By.id("login-button")).click();
 
         driver.findElement(By.xpath("//a/parent::div")).isDisplayed();
+        Assert.assertFalse(driver.findElement(By.cssSelector(".bm-item.menu-item")).isDisplayed());                        //.class1.class2
+        driver.findElement(By.xpath("//*[text()='Sauce Labs Bolt T-Shirt']")).isDisplayed();                // Поиск по тексту
+        driver.findElement(By.xpath("//*[contains(text(),'Bolt T-Shirt')]")).isDisplayed();                 //Поиск по частичному совпадению текста
         driver.findElement(By.xpath("//*[@id='item_5_title_link']/div")).click();
 
         driver.findElement(By.xpath("//button[contains(@name,'labs-fleece')]")).click();
@@ -71,9 +74,13 @@ public class Task_8 {
 
         Assert.assertTrue(driver.findElement(By.xpath("//li/ancestor::footer")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.xpath("//li[@class='social_facebook']/preceding::li")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//li[@class='social_facebook']/preceding::li")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//li[@class='social_facebook']/following::li")).isDisplayed());            //following
         Assert.assertTrue(driver.findElement(By.cssSelector("[class~='social_linkedin']")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.cssSelector("[class$='facebook']")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.cssSelector("[class*='cart_footer']")).isDisplayed());
         driver.findElement(By.id("finish")).click();
     }
 }
+
+
