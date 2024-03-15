@@ -74,7 +74,7 @@ public class Task_8 {
 
         Assert.assertTrue(driver.findElement(By.xpath("//li/ancestor::footer")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.xpath("//li[@class='social_facebook']/preceding::li")).isDisplayed());
-        Assert.assertTrue(driver.findElement(By.xpath("//li[@class='social_facebook']/following::li")).isDisplayed());            //following
+        Assert.assertTrue(driver.findElement(By.xpath("//li[@class='social_facebook']/following::li")).isDisplayed());           //following
         Assert.assertTrue(driver.findElement(By.cssSelector("[class~='social_linkedin']")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.cssSelector("[class$='facebook']")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.cssSelector("[class*='cart_footer']")).isDisplayed());
