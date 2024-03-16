@@ -20,7 +20,7 @@ import java.time.Duration;
 public class TaskOneTest extends BaseTest {
 
     @Test
-    public void validationTextInAlert() throws InterruptedException {
+    public void validationTextInAlert() {
 
         driver.get("https://the-internet.herokuapp.com/context_menu");
         Actions actions = new Actions(driver);
