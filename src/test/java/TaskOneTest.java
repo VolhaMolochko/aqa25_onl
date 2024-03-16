@@ -9,6 +9,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.openqa.selenium.Alert;
 
+import java.time.Duration;
+
 
 //Добавить тест для страницы Context Menu
 //Правый клик по элементу
@@ -16,24 +18,15 @@ import org.openqa.selenium.Alert;
 //Закрытие алерта
 
 public class TaskOneTest extends BaseTest {
-    //  private WebDriver driver;
-
-    @BeforeMethod
-    public void setup() {
-        driver = new BrowserService().getDriver();
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        driver.quit();
-    }
 
     @Test
-    public void validationTextInAlert() {
+    public void validationTextInAlert() throws InterruptedException {
 
         driver.get("https://the-internet.herokuapp.com/context_menu");
         Actions actions = new Actions(driver);
         actions.contextClick(driver.findElement(By.id("hot-spot"))).perform();
+
+        waitsService.showAlert();
 
         Alert alert = driver.switchTo().alert();
         String alertText = alert.getText();

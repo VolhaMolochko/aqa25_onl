@@ -1,12 +1,12 @@
 package core;
 
 import configuration.ReadProperties;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -30,9 +30,14 @@ public class WaitsService {
         wait = new WebDriverWait(driver, this.timeout);
     }
 
+    public Alert showAlert() {
+        return wait.until(ExpectedConditions.alertIsPresent());
+    }
+
     public WebElement waitForExists(By by) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
+
 
     public WebElement waitForVisibilityLocatedBy(By by) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
@@ -67,4 +72,6 @@ public class WaitsService {
 
         return (Boolean) fluent.until(driver -> driver.findElements(by).size() == 0 ? true : new RuntimeException());
     }
+
+
 }
