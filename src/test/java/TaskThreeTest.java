@@ -17,8 +17,7 @@ public class TaskThreeTest  extends BaseTest {
         WebElement fileUploadElement = waitsService.waitForExists(By.xpath("//*[@name ='file']"));
         String wayToFile = TaskThreeTest.class.getClassLoader().getResource( "Pearl.txt").getPath();
 
-
-       fileUploadElement.sendKeys(wayToFile);
+        fileUploadElement.sendKeys(wayToFile);
         waitsService.waitForExists(By.id("file-submit")).submit();
 
         WebElement checkNameFile = waitsService.waitForExists(By.id("uploaded-files"));
