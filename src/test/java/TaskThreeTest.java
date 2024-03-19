@@ -3,8 +3,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.File;
-
 public class TaskThreeTest extends BaseTest {
 //    Добавить тест для страницы File Upload
 //    Загрузить файл
