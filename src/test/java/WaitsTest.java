@@ -36,4 +36,6 @@ public class WaitsTest extends BaseTest {
 
         Assert.assertEquals(waitsService.waitForVisibilityLocatedBy(By.id("finish")).getText(), "Hello World!");
     }
+
+
 }
