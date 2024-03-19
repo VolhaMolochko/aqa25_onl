@@ -16,6 +16,7 @@ public class BrowserService {
     private DriverManagerType driverManagerType;
 
     public BrowserService() {
+
         switch (ReadProperties.browserName().toLowerCase()) {
             case "chrome":
                 driverManagerType = DriverManagerType.CHROME;
