@@ -1,5 +1,5 @@
-package Core;
-import Core.BrowserService;
+package core;
+
 import configuration.ReadProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
@@ -9,32 +9,41 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.time.Duration;
+
 public class BrowserService {
     private WebDriver driver = null;
+    private DriverManagerType driverManagerType;
 
     public BrowserService() {
+
         switch (ReadProperties.browserName().toLowerCase()) {
             case "chrome":
-                DriverManagerType driverManagerType = DriverManagerType.CHROME;
-                WebDriverManager.getInstance(driverManagerType).clearDriverCache().setup();
+                driverManagerType = DriverManagerType.CHROME;
+                WebDriverManager.getInstance(driverManagerType).setup();
+
                 driver = new ChromeDriver(getChromeOptions());
                 break;
-
             case "firefox":
-                driverManagerType=DriverManagerType.FIREFOX;
-                WebDriverManager.getInstance(driverManagerType).clearDriverCache().setup();
-                driver =new FirefoxDriver(getFireFoxOptions());
-                break;
+                driverManagerType = DriverManagerType.FIREFOX;
+                WebDriverManager.getInstance(driverManagerType).setup();
 
+                driver = new FirefoxDriver(getFirefoxOptions());
+                break;
             case "edge":
                 break;
-
             default:
-                System.out.println("Browser " + ReadProperties.browserName() + "in not supported");
+                System.out.println("Browser " + ReadProperties.browserName() + " is not supported.");
                 break;
-
         }
+    }
 
+    public WebDriver getDriver() {
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(ReadProperties.timeout()));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+        return driver;
     }
 
     private ChromeOptions getChromeOptions() {
@@ -44,20 +53,15 @@ public class BrowserService {
         chromeOptions.addArguments("--silent");
         chromeOptions.addArguments("--start-maximized");
         //chromeOptions.addArguments("--incognito");
-        //chromeOptions.addArguments("--headless"); //визуально спрятанный брайзер н оесть в памяти и там работает
+        //chromeOptions.addArguments("--headless");
+
         return chromeOptions;
     }
 
-    private FirefoxOptions getFireFoxOptions() {
+    private FirefoxOptions getFirefoxOptions() {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.addArguments();
+
         return firefoxOptions;
-    }
-
-    public WebDriver getDriver() {
-        driver.manage().window().maximize(); //разворачивает браузер
-        driver.manage().deleteAllCookies();  //удаляет куки
-
-        return driver;
     }
 }
