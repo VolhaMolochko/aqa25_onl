@@ -10,10 +10,11 @@ import org.openqa.selenium.WebElement;
 public class LoginPage extends BasePage {
     private final static String pagePath = "";
 
-    // Блок описания локаторов для элементов
-    private final By emailInputLocator = By.id("name");
-    private final By passwordInputLocator = By.id("password");
-    private final By loginButtonLocator = By.id("button_primary");
+    // Описываю элементы на странице логина
+    private final By usernameInputLocator = By.id("user-name");  //поле ввода юзернейма
+    private final By passwordInputLocator = By.name("password"); //поле ввода пароля
+    private final By loginButtonLocator = By.id("login-button");  //кнопка логина
+
 
     // Блок иницализации
     public LoginPage(WebDriver driver) {
@@ -22,7 +23,7 @@ public class LoginPage extends BasePage {
 
     @Override
     protected By getPageIdentifier() {
-        return emailInputLocator;
+        return usernameInputLocator;
     }
 
     @Override
@@ -30,9 +31,9 @@ public class LoginPage extends BasePage {
         return pagePath;
     }
 
-    // Блок атомарных методов
-    public WebElement getEmailInput() {
-        return waitsService.waitForVisibilityLocatedBy(emailInputLocator);
+    // Методы
+    public WebElement getUserNameInput() {
+        return waitsService.waitForVisibilityLocatedBy(usernameInputLocator);
     }
 
     public WebElement getPasswordInput() {
@@ -48,7 +49,7 @@ public class LoginPage extends BasePage {
     }
 
     public void login(String username, String password) {
-        getEmailInput().sendKeys(username);
+        getUserNameInput().sendKeys(username);
         getPasswordInput().sendKeys(password);
         clickLoginButton();
     }

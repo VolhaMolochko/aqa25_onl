@@ -22,7 +22,7 @@ public abstract class BasePage {
         }
     }
 
-    protected abstract By getPageIdentifier();
+    protected abstract By getPageIdentifier();   //идентификатор страницы
     protected abstract String getPagePath();
 
     public boolean isPageOpened() {
