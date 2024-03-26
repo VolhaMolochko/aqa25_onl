@@ -38,4 +38,8 @@ public class ReadProperties {
     public static int timeout()  {
         return Integer.parseInt(properties.getProperty("timeout"));
     }
+
+    public static String downloadPath() {
+        return properties.getProperty("defDownloadPath");
+    }
 }

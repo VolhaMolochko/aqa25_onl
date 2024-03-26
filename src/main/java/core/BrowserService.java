@@ -10,6 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.time.Duration;
+import java.util.HashMap;
+
+import static configuration.ReadProperties.downloadPath;
 
 public class BrowserService {
     private WebDriver driver = null;
@@ -47,7 +50,11 @@ public class BrowserService {
     }
 
     private ChromeOptions getChromeOptions() {
+        HashMap prefs = new HashMap<String, String>() {{
+            put("download.default_directory", downloadPath());
+        }};
         ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setExperimentalOption("prefs",prefs);
         chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("--ignore-certificate-errors");
         chromeOptions.addArguments("--silent");

@@ -1,11 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.io.File;
-import java.time.Duration;
 
 public class TaskFourTest extends BaseTest {
 //    Добавить тест для страницы File Download
@@ -15,17 +11,16 @@ public class TaskFourTest extends BaseTest {
     @Test
     public void FileDownloadTest() {
         driver.get("https://the-internet.herokuapp.com/download");
-        driver.findElement(By.xpath("//a[contains(@href, 'puppy.png')]")).click();
-        Assert.assertTrue(isFileExist("C:/Users/volha/Downloads/puppy.png"));
+        waitsService.waitForElementClickable(By.xpath("//a[contains(@href, 'logo.jpg')]"));
+        driver.findElement(By.xpath("//a[contains(@href, 'logo.jpg')]")).click();
+        assertFileExist("logo.jpg");
     }
 
-    private boolean isFileExist(String path) {
+    private void assertFileExist(String path) {
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(3))
-                    .until(s -> new File(path).exists());
-            return true;
+            waitsService.waitExist(path);
         } catch (TimeoutException e) {
-            return false;
+            Assert.fail("assert message ");
         }
     }
 }

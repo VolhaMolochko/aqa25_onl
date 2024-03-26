@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -73,5 +74,8 @@ public class WaitsService {
         return (Boolean) fluent.until(driver -> driver.findElements(by).size() == 0 ? true : new RuntimeException());
     }
 
-
+    public void waitExist(String path) {
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(s -> new File(path).exists());
+    }
 }
