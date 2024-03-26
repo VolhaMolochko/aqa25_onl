@@ -22,8 +22,8 @@ public class AddProjectPage extends ProjectBasePage {
     }
 
     @Override
-    protected WebElement getPageIdentifier() {
-        return driver.findElement(addProjectButtonLocator);
+    protected By getPageIdentifier() {
+        return addProjectButtonLocator;
     }
 
     @Override
@@ -34,4 +34,33 @@ public class AddProjectPage extends ProjectBasePage {
     public WebElement getAddProjectButton() {
         return waitsService.waitForVisibilityLocatedBy(addProjectButtonLocator);
     }
+
+    public AddProjectPage setName(String value) {
+        return this;
+    }
+
+    public AddProjectPage setAnnouncement(String value) {
+        return this;
+    }
+
+    public AddProjectPage setShowAnnouncement() {
+        return this;
+    }
+
+    public AddProjectPage removeShowAnnouncement() {
+        return this;
+    }
+
+    public AddProjectPage setProjectType(int value) {
+        return this;
+    }
+
+    public AddProjectPage setEnableTestCaseApprovals() {
+        return this;
+    }
+
+    public AddProjectPage removeEnableTestCaseApprovals() {
+        return this;
+    }
+
 }

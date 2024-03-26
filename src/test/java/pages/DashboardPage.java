@@ -27,8 +27,8 @@ public class DashboardPage extends BasePage {
     }
 
     @Override
-    protected WebElement getPageIdentifier() {
-        return driver.findElement(headerTitleLabelLocator);
+    protected By getPageIdentifier() {
+        return headerTitleLabelLocator;
     }
 
     @Override
