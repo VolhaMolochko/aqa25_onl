@@ -3,7 +3,6 @@ package pages.projects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pages.TopMenuPage;
 
 public class AddProjectPage extends ProjectBasePage {
     private final static String pagePath = "/index.php?/admin/projects/add/1";
